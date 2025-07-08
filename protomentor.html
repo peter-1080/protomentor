@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ProtoMentor | Empowering Student Innovations</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --secondary: #f59e0b;
+      --dark: #1f2937;
+      --light: #f8fafc;
+      --gray: #6b7280;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: white;
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+      opacity: 0.4;
+    }
+
+    .logo-corner {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 90px;
+      height: 90px;
+      border-radius: 18px;
+      background-color: white;
+      padding: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      z-index: 10;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-corner:hover {
+      transform: rotate(5deg) scale(1.05);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero-heading {
+      margin: 0 auto 3rem;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      background: linear-gradient(to right, white, #e0e7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      color: #e0e7ff;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .btn {
+      background-color: white;
+      color: var(--primary);
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      margin-top: 30px;
+      font-size: 1.1rem;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      margin-left: 15px;
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255,255,255,0.1);
+    }
+
+    .btn-group {
+      margin-top: 40px;
+    }
+
+    /* About Section */
+    .about {
+      position: relative;
+    }
+
+    .about::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgzMCw1OCwxMzgsMC4wMykiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IGZpbGw9InVybCgjcGF0dGVybikiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiLz48L3N2Zz4=');
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    .about p {
+      color: var(--dark);
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+    }
+
+    /* Services Section */
+    .services {
+      background-color: var(--light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to bottom, transparent, white);
+      z-index: 1;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 60px auto 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .service-card {
+      background-color: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      text-align: left;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      border: 1px solid rgba(0,0,0,0.03);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+      transition: width 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+
+    .service-card:hover::before {
+      width: 8px;
+    }
+
+    .service-card i {
+      font-size: 2.5rem;
+      color: var(--primary-light);
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .service-card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .service-card p {
+      color: var(--gray);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    /* Projects Section */
+    .projects {
+      background-color: white;
+    }
+
+    .coming-soon {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      background-color: var(--light);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .coming-soon::before {
+      content: 'Coming Soon';
+      position: absolute;
+      top: 20px;
+      right: -60px;
+      background-color: var(--secondary);
+      color: white;
+      padding: 5px 60px;
+      transform: rotate(45deg);
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .coming-soon p {
+      color: var(--gray);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Contact Section */
+    .contact {
+      background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+      color: white;
+      position: relative;
+    }
+
+    .contact .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2rem;
+      color: white;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+      padding: 15px 25px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .contact-link:hover {
+      transform: translateY(-5px);
+      background-color: rgba(255,255,255,0.2);
+    }
+
+    .contact-link i {
+      font-size: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--gray);
+      padding: 40px 0;
+      background-color: var(--light);
+      position: relative;
+    }
+
+    .footer-logo {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+
+    /* Floating Elements */
+    .floating {
+      position: absolute;
+      z-index: 1;
+      opacity: 0.7;
+    }
+
+    .floating-1 {
+      top: 20%;
+      left: 5%;
+      width: 100px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-2 {
+      bottom: 15%;
+      right: 8%;
+      width: 80px;
+      animation: float 8s ease-in-out infinite 2s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+      }
+      
+      .btn-group {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .btn {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+      }
+      
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-links {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+
+    /* Animation Classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.2s; }
+    .delay-2 { transition-delay: 0.4s; }
+    .delay-3 { transition-delay: 0.6s; }
+    .delay-4 { transition-delay: 0.8s; }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="firstlogo.jpg" alt="ProtoMentor Logo" class="logo-corner" />
+    
+    <div class="floating floating-1">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="rgba(255,255,255,0.1)" d="M45.6,-59.5C58.4,-51.2,68,-36.2,72.8,-19.4C77.6,-2.6,77.6,15.9,68.7,30.9C59.8,45.9,42,57.4,23.1,65.3C4.2,73.2,-15.8,77.5,-32.5,70.6C-49.2,63.7,-62.6,45.6,-68.4,25.4C-74.1,5.2,-72.2,-17.1,-61.8,-35.3C-51.3,-53.5,-32.3,-67.6,-12.9,-62.8C6.5,-58,25.3,-34.3,45.6,-59.5Z" transform="translate(100 100)" />
+      </svg>
+    </div>
+    
+    <div class="floating floating-2">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="rgba(255,255,255,0.1)" d="M42.1,-59.4C54.3,-52.7,63.9,-40.5,68.9,-26.3C73.9,-12.1,74.4,4.1,68.5,17.5C62.6,30.9,50.4,41.5,36.4,50.1C22.5,58.7,6.7,65.3,-8.5,68.1C-23.7,70.9,-38.4,69.9,-49.3,61.3C-60.2,52.7,-67.3,36.5,-70.6,19.2C-73.9,1.8,-73.4,-16.7,-64.2,-31.1C-55.1,-45.5,-37.3,-55.9,-20.9,-60.8C-4.6,-65.7,10.4,-65.2,42.1,-59.4Z" transform="translate(100 100)" />
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-heading fade-in">
+        <h1>Unlock Your Innovation Potential</h1>
+        <p>
+          ProtoMentor bridges the gap between student ideas and real-world impact through hands-on mentorship, technical guidance, and prototype development.
+        </p>
+      </div>
+
+      <div class="btn-group">
+        <a href="https://forms.gle/UXEZAYjark4b2AqZ8" target="_blank" class="btn fade-in delay-1">
+          <i class="fas fa-calendar-alt"></i> Book a Session
+        </a>
+        <a href="#services" class="btn btn-secondary fade-in delay-2">
+          <i class="fas fa-lightbulb"></i> Explore Services
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about">
+    <div class="container">
+      <h2 class="section-title fade-in">About ProtoMentor</h2>
+      
+      <p class="fade-in delay-1">
+        ProtoMentor is a pioneering student innovation platform that transforms raw ideas into tangible solutions. We're more than mentors - we're your collaborators in the innovation journey.
+      </p>
+      
+      <p class="fade-in delay-1">
+        Our unique approach combines technical expertise with entrepreneurial thinking, helping students navigate from concept to prototype to market-ready product. Whether you're preparing for a hackathon, academic project, or startup venture, we provide the tools and knowledge to succeed.
+      </p>
+      
+      <p class="fade-in delay-1">
+        With a network of industry professionals, academic experts, and successful student innovators, we've created an ecosystem where ideas flourish and dreams become reality.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title fade-in">What We Do</h2>
+      
+      <div class="service-grid">
+        <div class="service-card fade-in delay-1">
+          <i class="fas fa-user-graduate"></i>
+          <h3>Project Mentorship</h3>
+          <p>
+            One-on-one guidance for student projects from idea to execution. Weekly check-ins and expert feedback to keep your project on track.
+          </p>
+        </div>
+        
+        <div class="service-card fade-in delay-1">
+          <i class="fas fa-microchip"></i>
+          <h3>Prototyping Help</h3>
+          <p>
+            Assistance in turning concepts into working prototypes. We help with electronics, programming, and physical fabrication.
+          </p>
+        </div>
+        
+        <div class="service-card fade-in delay-2">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Technical Workshops</h3>
+          <p>
+            Hands-on training sessions in electronics, coding, and innovation. Learn practical skills applicable to your projects.
+          </p>
+        </div>
+        
+        <div class="service-card fade-in delay-2">
+          <i class="fas fa-trophy"></i>
+          <h3>Innovation Guidance</h3>
+          <p>
+            Support for participating in hackathons, expos, and competitions. From idea refinement to presentation skills.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects">
+    <div class="container">
+      <h2 class="section-title fade-in">Student Innovations</h2>
+      
+      <div class="coming-soon fade-in delay-1">
+        <p>
+          We're currently incubating the next wave of student innovations!
+        </p>
+        <p>
+          Check back soon to see groundbreaking projects from our talented community of student creators and inventors.
+        </p>
+        <p style="margin-top: 30px;">
+          <i class="fas fa-spinner fa-spin" style="font-size: 1.5rem; color: var(--primary);"></i>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact">
+    <div class="container">
+      <h2 class="section-title fade-in" style="color: white;">Ready to Innovate?</h2>
+      <p class="fade-in delay-1" style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 40px;">
+        Get in touch to discuss your project ideas or learn more about our programs.
+      </p>
+      
+      <div class="contact-links">
+        <a href="mailto:protomentor101@gmail.com" class="contact-link fade-in delay-1">
+          <i class="fas fa-envelope"></i> protomentor101@gmail.com
+        </a>
+        <a href="https://wa.me/message/7A76CXE5L7LBI1" target="_blank" class="contact-link fade-in delay-2">
+          <i class="fas fa-comment-dots"></i> Message Us Directly
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <img src="firstlogo.jpg" alt="ProtoMentor Logo" class="footer-logo" style="border-radius: 12px;">
+      
+      <p>&copy; <span id="year"></span> ProtoMentor. All rights reserved.</p>
+      <p style="margin-top: 10px;">Empowering the next generation of innovators and creators</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Add floating elements dynamically
+    function createFloatingElements() {
+      const colors = ['rgba(255,255,255,0.1)', 'rgba(30, 58, 138, 0.1)', 'rgba(245, 158, 11, 0.1)'];
+      const sections = document.querySelectorAll('section');
+      
+      sections.forEach(section => {
+        if (Math.random() > 0.5) {
+          const floating = document.createElement('div');
+          floating.className = 'floating';
+          floating.style.width = `${Math.random() * 80 + 40}px`;
+          floating.style.height = floating.style.width;
+          floating.style.top = `${Math.random() * 80 + 10}%`;
+          floating.style.left = `${Math.random() * 80 + 10}%`;
+          floating.style.animationDuration = `${Math.random() * 5 + 5}s`;
+          floating.style.animationDelay = `${Math.random() * 3}s`;
+          floating.style.opacity = Math.random() * 0.3 + 0.1;
+          
+          const svgNS = "http://www.w3.org/2000/svg";
+          const svg = document.createElementNS(svgNS, "svg");
+          svg.setAttribute("viewBox", "0 0 200 200");
+          
+          const path = document.createElementNS(svgNS, "path");
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          path.setAttribute("fill", color);
+          path.setAttribute("d", generateRandomBlob());
+          path.setAttribute("transform", "translate(100 100)");
+          
+          svg.appendChild(path);
+          floating.appendChild(svg);
+          section.appendChild(floating);
+        }
+      });
+    }
+
+    function generateRandomBlob() {
+      const points = [];
+      for (let i = 0; i < 10; i++) {
+        const angle = (i / 10) * Math.PI * 2;
+        const radius = 50 + Math.random() * 30;
+        const x = radius * Math.cos(angle);
+        const y = radius * Math.sin(angle);
+        points.push(`${x},${y}`);
+      }
+      return `M${points.join('L')}Z`;
+    }
+
+    // Uncomment to enable random floating elements
+    // createFloatingElements();
+  </script>
+</body>
+</html>
